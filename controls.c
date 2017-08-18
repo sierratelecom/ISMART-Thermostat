@@ -43,6 +43,7 @@
 
 #include "leds.h"
 #include "time.h"
+#include "thermostat.h"
 
 /******************************************************
  *                      Macros
@@ -83,6 +84,7 @@ void init_controls(void)
      */
     init_leds();
     init_time();
+    init_thermostat();
 }
 
 /**
@@ -95,5 +97,6 @@ void init_controls(void)
 void process_controls(void)
 {
     process_time();
+    process_thermostat();
 }
 /* [] END OF FILE */

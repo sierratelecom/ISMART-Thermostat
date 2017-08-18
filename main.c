@@ -55,7 +55,7 @@
 /******************************************************
  *                    Constants
  ******************************************************/
-#define CYCLE_DELAY     500     // Process loop every 1/2 second
+#define CYCLE_DELAY     1000     // Process loop every 1 second
 /******************************************************
  *                   Enumerations
  ******************************************************/
@@ -139,7 +139,7 @@ int main()
     while( 1 ) {
         process_controls();
         process_sensors();
-        //CyDelay( CYCLE_DELAY );
+        CyDelay( CYCLE_DELAY );
 
     }
 }

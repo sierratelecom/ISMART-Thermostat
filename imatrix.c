@@ -123,7 +123,7 @@ void init_iMatrix_interface(void)
 void send_AT_sensor( uint16_t data_type, uint16_t s_reg, void *value )
 {
     char tx_buffer[ AT_BUFFER_LENGTH ];
-    uint32_t return_value;
+    uint32_t return_value, foo;
     
     memset( tx_buffer, 0x00, AT_BUFFER_LENGTH );       // Initialize to 0
     strcpy( tx_buffer, "AT &IS" );
@@ -142,7 +142,9 @@ void send_AT_sensor( uint16_t data_type, uint16_t s_reg, void *value )
             itoa( *( int32_t *) value, &tx_buffer[ strlen( tx_buffer ) ], 10 );
             break;
         case IMATRIX_FLOAT : 
+            foo = (uint32_t) *(float *) value;
             //ftoa( *(float *) value, &tx_buffer[ strlen( tx_buffer ) ], 2 );
+            itoa( foo, &tx_buffer[ strlen( tx_buffer ) ], 10 );
             //sprintf( tx_buffer, "AT &IS%u=%f\r\n", s_reg, *(float *) value );
             // strcpy( tx_buffer, "AT &IS1=15.9876\r\n" );
             break;

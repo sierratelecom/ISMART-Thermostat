@@ -114,11 +114,11 @@ void init_temp(void)
     return;
 }
 /*******************************************************************************
-* Function Name: init_temp
+* Function Name: process_temp
 ********************************************************************************
 *
 * Summary:
-*  This function initializes measures the temperature from the sensor readings and to sends to iMatrix
+*  This function processes the temperature sensor
 *
 * Parameters:
 *  None

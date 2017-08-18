@@ -47,6 +47,7 @@
           <File BuildType="BUILD" Toolchain="">sensors.c</File>
           <File BuildType="BUILD" Toolchain="">switch_sensor.c</File>
           <File BuildType="BUILD" Toolchain="">temp.c</File>
+          <File BuildType="BUILD" Toolchain="">thermostat.c</File>
           <File BuildType="BUILD" Toolchain="">imatrix.h</File>
           <File BuildType="BUILD" Toolchain="">time.h</File>
           <File BuildType="BUILD" Toolchain="">ascii.h</File>
@@ -58,6 +59,7 @@
           <File BuildType="BUILD" Toolchain="">sensors.h</File>
           <File BuildType="BUILD" Toolchain="">switch_sensor.h</File>
           <File BuildType="BUILD" Toolchain="">temp.h</File>
+          <File BuildType="BUILD" Toolchain="">thermostat.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\Generated_Source\PSoC4">
