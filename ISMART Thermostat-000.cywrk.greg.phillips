@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="ISMART Thermostat-000\ISMART Thermostat\Header Files\thermostat.h">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="ISMART Thermostat-000\ISMART Thermostat\Source Files\pir.c">
 <ExpandedNodeIds>
 <v>ISMART Thermostat-000</v>
 <v>ISMART Thermostat-000\ISMART Thermostat</v>
@@ -389,6 +389,15 @@
 <name v=".\imatrix.c" />
 <name v=".\ISMART Thermostat.cydwr" />
 <name v=".\Generated_Source\PSoC4\System_Timer.h" />
+<name v=".\controls.c" />
+<name v=".\temp.c" />
+<name v=".\Generated_Source\PSoC4\CyBootAsmGnu.s" />
+<name v=".\switch_sensor.c" />
+<name v=".\sensors.c" />
+<name v=".\Generated_Source\PSoC4\UART_1_UART.c" />
+<name v=".\thermostat.c" />
+<name v=".\temp.h" />
+<name v=".\thermostat.h" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -396,7 +405,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1658, 654" SelectedTabbedMdiWindow="f0f4e3ae-fc06-4f54-b37b-ee1d8d429e4c"><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\TopDesign\TopDesign.cysch" Guid="92c00046-b02f-446a-96c9-238efaee8d1d" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\main.c" Guid="2c69685d-e03e-4611-9106-72547a285484" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\time.c" Guid="551270b1-d7cb-4644-9539-2e4ee39a7196" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\Generated_Source\PSoC4\System_Timer.c" Guid="7ab25e2b-995a-40ba-9cbb-ff44c7f84ff0" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\Generated_Source\PSoC4\isr_counter.c" Guid="59773cff-73ec-47d9-9ff5-1e72cac711ef" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\imatrix.c" Guid="f0f4e3ae-fc06-4f54-b37b-ee1d8d429e4c" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\ISMART Thermostat.cydwr" Guid="fb4b9706-42e9-4474-b0c5-2525207afb3b" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\Generated_Source\PSoC4\System_Timer.h" Guid="714e0d9e-c24c-424b-8485-570191448ab7" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="47e74c08-59d1-4490-a35f-58e1ed786d13" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="99, 654" SelectedTabbedMdiWindow="547c4521-79a6-46e1-ab38-dde34345abda"><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\TopDesign\TopDesign.cysch" Guid="92c00046-b02f-446a-96c9-238efaee8d1d" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\main.c" Guid="2c69685d-e03e-4611-9106-72547a285484" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\time.c" Guid="551270b1-d7cb-4644-9539-2e4ee39a7196" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\Generated_Source\PSoC4\System_Timer.c" Guid="7ab25e2b-995a-40ba-9cbb-ff44c7f84ff0" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\Generated_Source\PSoC4\isr_counter.c" Guid="59773cff-73ec-47d9-9ff5-1e72cac711ef" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\imatrix.c" Guid="f0f4e3ae-fc06-4f54-b37b-ee1d8d429e4c" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\ISMART Thermostat.cydwr" Guid="fb4b9706-42e9-4474-b0c5-2525207afb3b" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\Generated_Source\PSoC4\System_Timer.h" Guid="714e0d9e-c24c-424b-8485-570191448ab7" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\controls.c" Guid="d0491c16-ac44-42e1-8ada-0ba3375ea01b" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\temp.c" Guid="1feb524d-e126-403e-afa6-949b0c9610c8" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\Generated_Source\PSoC4\CyBootAsmGnu.s" Guid="be20e842-bd22-4c16-8ac3-744c7a76b681" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\switch_sensor.c" Guid="9bf7971d-312e-4770-93ca-126b56ba74fb" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\sensors.c" Guid="f65640e6-a3f6-4dad-9c16-fe41cf6cc352" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\Generated_Source\PSoC4\UART_1_UART.c" Guid="b9e94b2e-dc16-47bb-bdaf-1dff3f178399" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="47e74c08-59d1-4490-a35f-58e1ed786d13" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\thermostat.c" Guid="547c4521-79a6-46e1-ab38-dde34345abda" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\temp.h" Guid="e908f3ed-8b0b-4366-a595-9dcbdaba429a" /><DocumentWindow Key="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\thermostat.h" Guid="d6d10b3d-8393-4d8f-aaf8-70005964c66a" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
