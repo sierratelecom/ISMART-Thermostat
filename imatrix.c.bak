@@ -1,0 +1,250 @@
+/*
+ * Copyright 2017, Sierra Telecom. All Rights Reserved.
+ *
+ * This software, associated documentation and materials ("Software"),
+ * is owned by Sierra Telecom ("Sierra") and is protected by and subject to
+ * worldwide patent protection (United States and foreign),
+ * United States copyright laws and international treaty provisions.
+ * Therefore, you may use this Software only as provided in the license
+ * agreement accompanying the software package from which you
+ * obtained this Software ("EULA").
+ * If no EULA applies, Sierra hereby grants you a personal, non-exclusive,
+ * non-transferable license to copy, modify, and compile the Software
+ * source code solely for use in connection with Sierra's
+ * integrated circuit products. Any reproduction, modification, translation,
+ * compilation, or representation of this Software except as specified
+ * above is prohibited without the express written permission of Sierra.
+ *
+ * Disclaimer: THIS SOFTWARE IS PROVIDED AS-IS, WITH NO WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT, IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. Sierra
+ * reserves the right to make changes to the Software without notice. Sierra
+ * does not assume any liability arising out of the application or use of the
+ * Software or any product or circuit described in the Software. Sierra does
+ * not authorize its products for use in any products where a malfunction or
+ * failure of the Sierra product may reasonably be expected to result in
+ * significant property damage, injury or death ("High Risk Product"). By
+ * including Sierra's product in a High Risk Product, the manufacturer
+ * of such system or application assumes all risk of such use and in doing
+ * so agrees to indemnify Sierra against all liability.
+ */
+/** @file imatrix.c
+ *
+ *  Created on: April 26, 2017
+ *      Author: greg.phillips
+ */
+
+
+
+#include <project.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+#include <CyLib.h>
+#include <math.h>
+
+#include "imatrix.h"
+
+/******************************************************
+ *                      Macros
+ ******************************************************/
+
+/******************************************************
+ *                    Constants
+ ******************************************************/
+#define AT_SEND_BUFFER_LENGTH   30
+
+/******************************************************
+ *                   Enumerations
+ ******************************************************/
+enum {
+    GET_UINT32,
+    GET_INT32,
+    GET_FLOAT,
+    GET_OK,
+};
+/******************************************************
+ *                 Type Definitions
+ ******************************************************/
+
+/******************************************************
+ *                    Structures
+ ******************************************************/
+
+/******************************************************
+ *               Function Declarations
+ ******************************************************/
+void ftoa(float f, char *str, uint8_t precision);
+
+/******************************************************
+ *               Variable Definitions
+ ******************************************************/
+
+/******************************************************
+ *               Function Definitions
+ ******************************************************/
+/**
+  * @brief Set up the serial port for communication to the ISMART module
+  * @param  None
+  * @retval : None
+  */
+
+void init_iMatrix_interface(void)
+{
+    uint32_t return_value;
+    
+    UART_1_Enable();
+    UART_1_Init();
+    UART_1_Start();
+    UART_1_UartDisableCts();
+    /*
+     * Set up the right mode for future transactions
+     */
+    UART_1_UartPutString( "AT V1\r\n" );
+    
+    get_AT_response( false, &return_value );
+    
+}
+
+/**
+  * @brief Send and AT command to set a value of a uint32 sensor
+  * @param  Sensor Register, value
+  * @retval : None
+  */
+void send_AT_sensor( uint16_t data_type, uint16_t s_reg, void *value )
+{
+    char tx_buffer[ AT_SEND_BUFFER_LENGTH ];
+    uint32_t return_value;
+    
+    memset( tx_buffer, 0x00, AT_SEND_BUFFER_LENGTH );       // Initialize to 0
+    strcpy( tx_buffer, "AT &IS" );
+    itoa( s_reg, &tx_buffer[ strlen( tx_buffer ) ], 10 );
+    strcat( tx_buffer, "=" );
+    /*
+     * Select data to output and add data
+     */
+    switch( data_type ) {
+        case IMATRIX_UINT32 :
+            //sprintf( tx_buffer, "AT &IS%u=%lu\r\n", s_reg, *(uint32_t *) value );
+            itoa( *( uint32_t *) value, &tx_buffer[ strlen( tx_buffer ) ], 10 );
+            break;
+        case IMATRIX_INT32 :
+            //sprintf( tx_buffer, "AT &IS%u=%ld\r\n", s_reg, *(int32_t *) value );
+            itoa( *( int32_t *) value, &tx_buffer[ strlen( tx_buffer ) ], 10 );
+            break;
+        case IMATRIX_FLOAT : 
+            ftoa( *(float *) value, &tx_buffer[ strlen( tx_buffer ) ], 2 );
+            //sprintf( tx_buffer, "AT &IS%u=%f\r\n", s_reg, *(float *) value );
+            // strcpy( tx_buffer, "AT &IS1=15.9876\r\n" );
+            break;
+    }
+    strcat( tx_buffer, "\r\n" );
+    
+    UART_1_UartPutString( tx_buffer );
+    
+    get_AT_response( RESPONSE_NONE, &return_value );
+    CyDelay( 500 );
+
+}
+/**
+  * @brief Get a response for an AT command
+  * @param  Sensor Register, value
+  * @retval : None
+  */
+uint16_t get_AT_response( uint16_t response_type, void *value )
+{
+    uint16_t response_state;
+    /*
+     * Look for response type and /r/nOK/r/n
+     *
+     * Return Response value
+     *
+     * Repsonse types:  RESPONSE_NONE - Just look for OK
+     *                  RESPONSE_UINT32 - A unsigned Integer
+     *                  RESPONSE_INT32 -  A signed Integer
+     *                  RESPONSE_FLOAT - A float
+     */
+    switch( response_type ) {
+        case RESPONSE_UINT32 :
+            response_state = GET_UINT32;
+            break;
+        case RESPONSE_INT32 :
+            break;
+        case RESPONSE_FLOAT :
+            break;
+        case RESPONSE_NONE :
+        default :
+            break;
+    }
+    /*
+     * Look first for a CR/LF from the entered request
+     */
+    
+    return 0;
+}
+/**
+  * @brief Helper routine because no sprintf support
+  * @param  number to convert, string to save, precision required.
+  * @retval : None
+  */
+void ftoa(float f, char *str, uint8_t precision)
+{
+  uint8_t i, j, divisor = 1;
+  int8_t log_f;
+  int32_t int_digits = (int)f;             //store the integer digits
+  float decimals;
+  char s1[12];
+
+  memset(s1, 0, 10);
+
+  if (f < 0) {                             //if a negative number 
+    str[0] = '-';                          //start the char array with '-'
+    f = fabs(f);                            //store its positive absolute value
+  }
+  log_f = ceil(log10(f));                  //get number of digits before the decimal
+  if (log_f > 0) {                         //log value > 0 indicates a number > 1
+    if (log_f == precision) {              //if number of digits = significant figures
+      f += 0.5;                            //add 0.5 to round up decimals >= 0.5
+      itoa(f, s1, 10);                     //itoa converts the number to a char array
+      strcat(str, s1);                     //add to the number string
+    }
+    else if ((log_f - precision) > 0) {    //if more integer digits than significant digits
+      i = log_f - precision;               //count digits to discard
+      divisor = 10;
+      for (j = 0; j < i; j++) divisor *= 10;    //divisor isolates our desired integer digits 
+      f /= divisor;                             //divide
+      f += 0.5;                            //round when converting to int
+      int_digits = (int)f;
+      int_digits *= divisor;               //and multiply back to the adjusted value
+      itoa(int_digits, s1, 10);
+      strcat(str, s1);
+    }
+    else {                                 //if more precision specified than integer digits,
+      itoa(int_digits, s1, 10);            //convert
+      strcat(str, s1);                     //and append
+    }
+  }
+
+  else {                                   //decimal fractions between 0 and 1: leading 0
+    s1[0] = '0';
+    strcat(str, s1);
+  }
+
+  if (log_f < precision) {                 //if precision exceeds number of integer digits,
+    decimals = f - (int)f;                 //get decimal value as float
+    strcat(str, ".");                      //append decimal point to char array
+
+    i = precision - log_f;                 //number of decimals to read
+    for (j = 0; j < i; j++) {              //for each,
+      decimals *= 10;                      //multiply decimals by 10
+      if (j == (i-1)) decimals += 0.5;     //and if it's the last, add 0.5 to round it
+      itoa((int)decimals, s1, 10);         //convert as integer to character array
+      strcat(str, s1);                     //append to string
+      decimals -= (int)decimals;           //and remove, moving to the next
+    }
+  }
+}
+
+/* [] END OF FILE */
