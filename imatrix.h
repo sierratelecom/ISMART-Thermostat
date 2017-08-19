@@ -41,11 +41,12 @@
 #define AT_SENSOR_5         5    // Lux Source
 
 #define AT_CONTROL_0        0    // RTC Value
-#define AT_CONTROL_1        1    // Set Point
-#define AT_CONTROL_2        2    // Fan On
-#define AT_CONTROL_3        3    // Cool On
-#define AT_CONTROL_4        4    // Heat On
-#define AT_CONTROL_5        5    // Mode
+#define AT_CONTROL_1        1    // Set Point Home
+#define AT_CONTROL_2        2    // Set Point Away High
+#define AT_CONTROL_3        3    // Set Point Away Low
+#define AT_CONTROL_4        4    // Fan On
+#define AT_CONTROL_5        5    // Cool/Heat 0 - Cool / 1 - Heat
+#define AT_CONTROL_6        6    // Mode
 
 
 #define RESPONSE_NONE       0x00

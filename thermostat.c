@@ -58,26 +58,37 @@ enum {
     MODE_COOL,
     MODE_AUTO,
 };
+
+enum {
+    THERMO_INIT,
+    THERMO_HOME,
+    THERMO_AWAY,
+};
 /******************************************************
  *                 Type Definitions
  ******************************************************/
 typedef struct {
-    unsigned int settings_loaded   : 1;
+    unsigned int settings_loaded    : 1;
+    unsigned int home               : 1;
+    uint16_t state;
+    int32_t home_set_point;
+    int32_t away_set_point;
     uint32_t heat_on;
     uint32_t cool_on;
     uint32_t fan_on;
-    uint32_t mode;
+    uint32_t current_mode;
 } thermostat_t;
 /******************************************************
  *                    Structures
  ******************************************************/
 thermostat_t thermostat = 
 {
+    .state = THERMO_INIT,
     .settings_loaded = false,
     .heat_on = false,
     .cool_on = false,
     .fan_on = false,
-    .mode = MODE_OFF,
+    .current_mode = MODE_OFF,
 };
 /******************************************************
  *               Function Declarations

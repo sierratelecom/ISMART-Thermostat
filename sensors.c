@@ -61,7 +61,7 @@
  ******************************************************/
 #define LED_ON						(0u)
 #define LED_OFF						(1u)
-
+#define LED_DELAY                   (100)
 /******************************************************
  *                   Enumerations
  ******************************************************/
@@ -117,13 +117,14 @@ void process_sensors(void)
     process_lux();
 }
 /**
-  * @brief initialize hardware
+  * @brief initialize hardware for sensors and controls
   * @param  None
   * @retval : None
   */
 
 void init_hardware(void)
 {
+    uint16_t i;
     	/* Start the Scanning SAR ADC Component and start conversion */
 	ADC_Start();
 	ADC_StartConvert();
@@ -139,9 +140,37 @@ void init_hardware(void)
     
     /* Enable Programmable Voltage Reference */
     PVref_1_Enable();
+    /*
+     * PIR Related
+     */
+       
+    /* Start the Reference Buffer */
+    RefBuffer_Start();
     
+    /* Start the first stage amplifier */
+    PIRAmplifierStage1_Start();
+    
+    /* Start the second stage amplifier (PGA) */
+    PIRAmplifierStage2_Start();    
+    /*
+     * LEDS - pretty little light show on H/W Init
+     */
+    for( i = 0; i < 3; i++ ) {
+        Pin_LED_Red_Write(LED_ON);
+        Pin_LED_Blue_Write(LED_OFF);
+        CyDelay( LED_DELAY );
+        Pin_LED_Green_Write(LED_ON);
+        Pin_LED_Red_Write(LED_OFF);
+        CyDelay( LED_DELAY );
+        Pin_LED_Blue_Write(LED_ON);
+        Pin_LED_Green_Write(LED_OFF);
+        CyDelay( LED_DELAY );
+    }
+    /*
+     * All Off
+     */
     Pin_LED_Red_Write(LED_OFF);
-    //Pin_LED_Green_Write(LED_OFF);
+    Pin_LED_Green_Write(LED_OFF);
     Pin_LED_Blue_Write(LED_OFF);
 }
 /* [] END OF FILE */
