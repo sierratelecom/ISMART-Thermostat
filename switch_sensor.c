@@ -58,14 +58,16 @@
 /******************************************************
  *                    Constants
  ******************************************************/
-
+#define DEBOUNCE_COUNT  5
 /******************************************************
  *                   Enumerations
  ******************************************************/
 enum {
     SWITCH_INIT,
     MONITOR_SWITCH,
+    DEBOUNCE_ON,
     WAIT_TILL_OFF,
+    DEBOUNCE_OFF,
 };
 /******************************************************
  *                 Type Definitions
@@ -120,27 +122,47 @@ void process_switch(void)
             count = 0;
             break;
         case MONITOR_SWITCH :
-            count += 1;
-            if( ( Switch_1_Read() == 0 ) || (count > 10 ) ) {
+            if( Switch_1_Read() == 0 ) {    // Switch Active Low
                 count = 0;
-                /*
-                 * Switch Pressed - Send Notification, Turn on Blue LED - Wait till off again
-                 */
-                value = 1;
-                send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_0, &value );
-                // set_uint32_sensor_data( ASCB_SENSOR_SWITCH, 1 );
-                switch_state = WAIT_TILL_OFF;
+                switch_state = DEBOUNCE_ON;
             }
+            break;
+        case DEBOUNCE_ON :
+            if( Switch_1_Read() == 0 ) {    // Still low
+                count += 1;
+                if( count >= DEBOUNCE_COUNT ) {
+                    /*
+                     * Switch Pressed - Send Notification, Turn on Blue LED - Wait till off again
+                     */
+                    value = 1;
+                    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_0, &value );
+                    // set_uint32_sensor_data( ASCB_SENSOR_SWITCH, 1 );
+                    switch_state = WAIT_TILL_OFF;
+                }
+            } else
+                switch_state = MONITOR_SWITCH;
             break;
         case WAIT_TILL_OFF :
             if( Switch_1_Read() != 0 ) {
-                /*
-                 * Switch Off got back to monitoring - turn off LED
-                 */
-                value = 0;
-                send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_0, &value );
-                switch_state = MONITOR_SWITCH;
+                count = 0;
+                switch_state = DEBOUNCE_OFF;
             }
+            break;
+        case DEBOUNCE_OFF :
+            if( Switch_1_Read() != 0 ) {
+                count += 1;
+                if( count >= DEBOUNCE_COUNT ) {
+                    /*
+                     * Switch Pressed - Send Notification, Turn on Blue LED - Wait till off again
+                     */
+                    value = 0;
+                    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_0, &value );
+                    // set_uint32_sensor_data( ASCB_SENSOR_SWITCH, 1 );
+                    switch_state = MONITOR_SWITCH;
+                }
+            } else
+                switch_state = WAIT_TILL_OFF;
+            break;
         default :
             switch_state = SWITCH_INIT;
             break;

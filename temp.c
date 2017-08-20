@@ -82,7 +82,7 @@ void init_hardware(void);
 /******************************************************
  *               Variable Definitions
  ******************************************************/
-
+int32_t current_temperature;
 /******************************************************
  *               Function Definitions
  ******************************************************/
@@ -163,19 +163,24 @@ void process_temp(void)
         temperature = Thermistor_GetTemperature(thermistorResistance);
             
         /* Turn ON Blue LED if Temperature is <= 25°C */ 
+        /* Turn ON both Blue and Red LEDs if the temperature is >25°C and <=30°C */
+        /* Turn ON Red LED if temperature is >30°C */
+        /*
+        * - Not Used
         if (temperature <= TEMPERATURE_THRESHOLD_LOW) {
             Pin_LED_Blue_Write(LED_ON);
             Pin_LED_Red_Write(LED_OFF);
         } else if ((temperature > TEMPERATURE_THRESHOLD_LOW) && (temperature < TEMPERATURE_THRESHOLD_HIGH)) {
-            /* Turn ON both Blue and Red LEDs if the temperature is >25°C and <=30°C */
+            
             Pin_LED_Blue_Write(LED_ON);
             Pin_LED_Red_Write(LED_ON);
         } else {
-            /* Turn ON Red LED if temperature is >30°C */
             Pin_LED_Blue_Write(LED_OFF);
             Pin_LED_Red_Write(LED_ON);
         }   
+        */
         float_temp = (float) ( temperature ) / 100.0;
+        current_temperature = (int32_t) ( temperature ) / 100;
         send_AT_sensor( IMATRIX_FLOAT, AT_SENSOR_1, &float_temp );
     }
     

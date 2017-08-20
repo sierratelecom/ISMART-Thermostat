@@ -49,6 +49,10 @@
 /******************************************************
  *                    Constants
  ******************************************************/
+#define LED_ON						(0u)
+#define LED_OFF						(1u)
+#define COOL_ON                     0x01
+#define HEAT_ON                     0x02
 /******************************************************
  *                   Enumerations
  ******************************************************/
@@ -57,6 +61,7 @@ enum {
     MODE_HEAT,
     MODE_COOL,
     MODE_AUTO,
+    NO_MODES,
 };
 
 enum {
@@ -70,11 +75,13 @@ enum {
 typedef struct {
     unsigned int settings_loaded    : 1;
     unsigned int home               : 1;
+    unsigned int heat_on            : 1;
+    unsigned int cooling_on         : 1;
+    unsigned int heating_on         : 1;
     uint16_t state;
     int32_t home_set_point;
-    int32_t away_set_point;
-    uint32_t heat_on;
-    uint32_t cool_on;
+    int32_t away_high_set_point;
+    int32_t away_low_set_point;
     uint32_t fan_on;
     uint32_t current_mode;
 } thermostat_t;
@@ -86,19 +93,29 @@ thermostat_t thermostat =
     .state = THERMO_INIT,
     .settings_loaded = false,
     .heat_on = false,
-    .cool_on = false,
     .fan_on = false,
+    .cooling_on = false,
+    .heating_on = false,
+    .home_set_point = 21,
+    .away_low_set_point = 12,
+    .away_high_set_point = 30,
     .current_mode = MODE_OFF,
 };
 /******************************************************
  *               Function Declarations
  ******************************************************/
-void init_hardware(void);
+
+void cool_off(void);
+void cool_on(void);
+void heat_off(void);
+void heat_on(void);
+void fan_off(void);
+void fan_on(void);
 
 /******************************************************
  *               Variable Definitions
  ******************************************************/
-
+extern int32_t current_temperature;
 /******************************************************
  *               Function Definitions
  ******************************************************/
@@ -122,7 +139,45 @@ void init_hardware(void);
 *******************************************************************************/
 void init_thermostat(void)
 {
-    
+    uint32_t uvalue;
+    int32_t ivalue;
+    /*
+     *  Get Setting from ISMART board
+     */
+    if( get_AT_control( RESPONSE_INT32, AT_CONTROL_1, &ivalue ) == true ) {
+        thermostat.home_set_point = ivalue;
+        if( get_AT_control( RESPONSE_INT32, AT_CONTROL_2, &ivalue ) == true ) {
+            thermostat.away_high_set_point = ivalue;
+            if( get_AT_control( RESPONSE_INT32, AT_CONTROL_3, &ivalue ) == true ) {
+                thermostat.away_low_set_point = ivalue;
+                if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_4, &uvalue ) == true ) {
+                    thermostat.fan_on = ( uvalue == 0 ? false : true );
+                    if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_5, &uvalue ) == true ) {
+                        if( uvalue == 0 ) {
+                            thermostat.cooling_on = false;
+                            thermostat.heating_on = false;
+                        } else if( uvalue == 1 ) {
+                            thermostat.cooling_on = true;
+                            thermostat.heating_on = false;
+                        } else if( uvalue == 2 ) {
+                            thermostat.cooling_on = false;
+                            thermostat.heating_on = true;
+                        }
+                        if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_6, &uvalue ) == true ) {
+                            if( uvalue >= NO_MODES )
+                                uvalue = MODE_OFF;
+                            thermostat.current_mode = uvalue;
+                            heat_off();
+                            cool_off();
+                            fan_off();
+                            thermostat.state = THERMO_HOME;
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     return;
 }
@@ -144,7 +199,233 @@ void init_thermostat(void)
 *******************************************************************************/
 void process_thermostat(void)
 {
+    uint32_t uvalue, new_mode;
+    int32_t ivalue;
+    
+    /*
+     * Don't do anyting until initialized
+    */
+    if( thermostat.state == THERMO_INIT ) {
+        init_thermostat();
+        return;
+    }
+    /*
+     * Check if we need to switch to away mode
+     * 
+     * To be added
+     *
+     */
+            
+    /*
+     * Update any changes to Modes/Set Points
+     *
+     * Get Home Set Point
+     */
+    if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_1, &ivalue ) == true ) {
+        thermostat.home_set_point = ivalue;
+    }
+    /*
+     * Get Away High Set Point
+     */
+    if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_2, &ivalue ) == true ) {
+        thermostat.away_high_set_point = ivalue;
+    }
+    /*
+     * Get Away Low Set Point
+     */
+    if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_3, &ivalue ) == true ) {
+        thermostat.away_low_set_point = ivalue;
+    }
+    /*
+     * Do we need to turn the Fan On/Off
+     */
+    if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_4, &uvalue ) == true ) {
+        if( uvalue == 0 ) {
+            if( thermostat.fan_on == true ) {
+                fan_off();
+            }
+        } else {
+            if( thermostat.fan_on == false ) {
+                fan_on();
+            }
+        }
+    }
+    /*
+     * Get current Mode
+      */
+    if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_6, &uvalue ) == true ) {
+        if( uvalue >= NO_MODES )
+            uvalue = MODE_OFF;
+        new_mode = uvalue;
+    } else
+        new_mode = thermostat.current_mode; // Now the current mode
 
+
+    switch( thermostat.state ) {
+        case THERMO_INIT :
+            init_thermostat();
+            break;
+        case THERMO_AWAY :
+        case THERMO_HOME :
+            /*
+             *  Process current settings to see what we do
+             */
+            switch( thermostat.current_mode ) {
+                case MODE_COOL :
+                    if( new_mode != MODE_COOL ) {   // We are changing modes
+                        /*
+                         * Make Sure the heating is off
+                         */
+                        if( thermostat.heating_on == true )
+                            heat_off();
+                    }
+                    /*
+                     * do we need to cool from current temp
+                     */
+                    if( current_temperature > thermostat.home_set_point ) {
+                        if( thermostat.cooling_on == false )
+                            cool_on();
+                    } else {
+                        if( thermostat.cooling_on == true )
+                            cool_off();
+                    }
+                    break;
+                case MODE_HEAT :
+                    if( new_mode != MODE_HEAT ) {   // We are changing modes
+                        /*
+                         * Make Sure the cooling is off
+                         */
+                        if( thermostat.cooling_on == true )
+                            cool_off();
+                    }
+                    /*
+                     * do we need to heat from current temp
+                     */
+                    if( current_temperature < thermostat.home_set_point ) {
+                        if( thermostat.heating_on == false )
+                            heat_on();
+                    } else {
+                        if( thermostat.heating_on == true )
+                            heat_off();
+                    }
+                    break;
+                case MODE_AUTO :
+                    /*
+                     *  Turn on Heating or Cooling depending on temp
+                     */
+                    if( current_temperature > thermostat.home_set_point ) {
+                        /*
+                         * We need to cool from current temp
+                         */
+                        /*
+                         *  Make sure the heat is OFF
+                         */
+                        if( thermostat.heating_on == true )
+                            heat_off();
+                        /*
+                         * Cool if not already cooling
+                         */
+                        if( thermostat.cooling_on == false )
+                            cool_on();
+                    } else if( current_temperature < thermostat.home_set_point ) {
+                        /*
+                         *  Make sure the Cooling is OFF
+                         */
+                        if( thermostat.cooling_on == true )
+                            cool_off();
+                        /*
+                         * Heat if not already heating
+                         */
+                        if( thermostat.heating_on == false )
+                            heat_on();
+                    } else {
+                        /*
+                        * We are at the right temp - make sure everything is off
+                        */
+                        if( thermostat.cooling_on == true )
+                            cool_off();
+                        if( thermostat.heating_on == true )
+                            heat_off();
+                    }
+                    break;
+                case MODE_OFF :
+                    /*
+                     * We are OFF - make sure everything is off
+                     */
+                    if( thermostat.cooling_on == true )
+                        cool_off();
+                    if( thermostat.heating_on == true )
+                        heat_off();
+                    if( thermostat.fan_on == true )
+                        fan_off();
+
+                default :
+                    break;
+                    }
+            break;
+    }
+    thermostat.current_mode = new_mode; // Now the current mode
+    uvalue = ( thermostat.cooling_on == true ? COOL_ON : 0 ) | ( thermostat.heating_on == true ? HEAT_ON : 0 );
+    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_5, &uvalue );
+}
+
+void cool_off(void)
+{
+    uint32_t value;
+    
+    thermostat.cooling_on = false;
+    value = ( thermostat.cooling_on == true ? COOL_ON : 0 ) | ( thermostat.heating_on == true ? HEAT_ON : 0 );
+    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_5, &value );
+
+    Pin_LED_Blue_Write(LED_OFF);
+    
+}
+void cool_on(void)
+{
+    uint32_t value;
+    
+    thermostat.cooling_on = true;
+    value = ( thermostat.cooling_on == true ? COOL_ON : 0 ) | ( thermostat.heating_on == true ? HEAT_ON : 0 );
+    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_5, &value );
+    Pin_LED_Blue_Write(LED_ON);
+}
+void heat_off(void)
+{
+    uint32_t value;
+    
+    thermostat.heating_on = false;
+    value = ( thermostat.cooling_on == true ? COOL_ON : 0 ) | ( thermostat.heating_on == true ? HEAT_ON : 0 );
+    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_5, &value );
+    Pin_LED_Red_Write(LED_OFF);
+    
+}
+void heat_on(void)
+{
+    uint32_t value;
+    
+    thermostat.heating_on = true;
+    value = ( thermostat.cooling_on == true ? COOL_ON : 0 ) | ( thermostat.heating_on == true ? HEAT_ON : 0 );
+    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_5, &value );
+    Pin_LED_Red_Write(LED_ON);
+}
+void fan_off(void)
+{
+    uint32_t value;
+    
+    thermostat.fan_on = false;
+    value = 0;
+    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_4, &value );
+    Pin_LED_Green_Write(LED_OFF);
+    
+}
+void fan_on(void)
+{
+    uint32_t value;
+    
+    thermostat.fan_on = true;
+    value = 1;
+    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_4, &value );
+    Pin_LED_Blue_Write(LED_ON);
 }
 
 /* [] END OF FILE */

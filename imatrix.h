@@ -45,7 +45,7 @@
 #define AT_CONTROL_2        2    // Set Point Away High
 #define AT_CONTROL_3        3    // Set Point Away Low
 #define AT_CONTROL_4        4    // Fan On
-#define AT_CONTROL_5        5    // Cool/Heat 0 - Cool / 1 - Heat
+#define AT_CONTROL_5        5    // Cool/Heat 0 - off / 1 - Cool / 2 - Heat
 #define AT_CONTROL_6        6    // Mode
 
 

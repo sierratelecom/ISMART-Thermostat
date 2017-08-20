@@ -19,7 +19,7 @@
 #include <cydevice_trm.h>
 #include <CyLib.h>
 #include <isr_counter.h>
-#include <project.h>
+
 
 #if !defined(isr_counter__REMOVED) /* Check for removal by optimization */
 
@@ -164,6 +164,8 @@ CY_ISR(isr_counter_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START isr_counter_Interrupt` */
+#define System_Timer_INTR_MASK_TC   0x01
+    void System_Timer_ClearInterrupt(uint32 interruptMask);
     /*
      * Ack Interrupt
      */

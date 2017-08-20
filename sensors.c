@@ -51,6 +51,8 @@
 #include "temp.h"
 #include "humidity.h"
 #include "lux.h"
+#include "pir.h"
+#include "thermostat.h"
 
 /******************************************************
  *                      Macros
@@ -101,6 +103,9 @@ void init_sensors(void)
     init_temp();
     init_humidity();
     init_lux();
+    init_pir();
+    init_thermostat();
+
 }
 
 /**
@@ -115,6 +120,8 @@ void process_sensors(void)
     process_temp();
     process_humidity();
     process_lux();
+    process_pir();
+    process_thermostat();
 }
 /**
   * @brief initialize hardware for sensors and controls

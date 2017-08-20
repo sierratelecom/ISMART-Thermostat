@@ -657,7 +657,7 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\cy_psoc3_inc.v</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 </warp_dep>
-<deps_time v="131474928296530000" />
+<deps_time v="131476568463910001" />
 <top_block v="TopDesign" />
 <last_generation v="8" />
 <pdl_path v="" />
@@ -670,7 +670,7 @@
 <CyGuid_f44455c5-3770-4452-b988-0a7a7ff46256 type_name="CyDesigner.Common.ProjMgmt.Model.CyConfigDependencies" version="1">
 <dependency_info name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM0p" xml_contents_version="2">
 <CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021 type_name="CyDesigner.Common.Base.CyFileDeps" version="1">
-<file name=".\CortexM0p\ARM_GCC_541\Debug\humdity.o">
+<file name=".\CortexM0p\ARM_GCC_541\Debug\thermostat.o">
 <dep name=".\Generated_Source\PSoC4\ADC.h" />
 <dep name=".\Generated_Source\PSoC4\ADC_FILTER.h" />
 <dep name=".\Generated_Source\PSoC4\ADC_IRQ.h" />
@@ -756,11 +756,8 @@
 <dep name=".\Generated_Source\PSoC4\isr_Timebase5s.h" />
 <dep name=".\Generated_Source\PSoC4\isr_counter.h" />
 <dep name=".\Generated_Source\PSoC4\project.h" />
-<dep name=".\controls.h" />
-<dep name=".\humdity.c" />
-<dep name=".\humidity.h" />
 <dep name=".\imatrix.h" />
-<dep name=".\sensors.h" />
+<dep name=".\thermostat.c" />
 </file>
 <file name=".\Generated_Source\PSoC4\ADC.h" />
 <file name=".\Generated_Source\PSoC4\ADC_FILTER.h" />
@@ -847,11 +844,8 @@
 <file name=".\Generated_Source\PSoC4\isr_Timebase5s.h" />
 <file name=".\Generated_Source\PSoC4\isr_counter.h" />
 <file name=".\Generated_Source\PSoC4\project.h" />
-<file name=".\controls.h" />
-<file name=".\humdity.c" />
-<file name=".\humidity.h" />
 <file name=".\imatrix.h" />
-<file name=".\sensors.h" />
+<file name=".\thermostat.c" />
 <file name=".\CortexM0p\ARM_GCC_541\Debug\imatrix.o">
 <dep name=".\Generated_Source\PSoC4\ADC.h" />
 <dep name=".\Generated_Source\PSoC4\ADC_FILTER.h" />
@@ -946,6 +940,202 @@
 <file name=".\ascii.h" />
 <file name=".\imatrix.c" />
 <file name=".\time.h" />
+<file name=".\CortexM0p\ARM_GCC_541\Debug\sensors.o">
+<dep name=".\Generated_Source\PSoC4\ADC.h" />
+<dep name=".\Generated_Source\PSoC4\ADC_FILTER.h" />
+<dep name=".\Generated_Source\PSoC4\ADC_IRQ.h" />
+<dep name=".\Generated_Source\PSoC4\ADC_intSarClock.h" />
+<dep name=".\Generated_Source\PSoC4\ADC_intUabClock.h" />
+<dep name=".\Generated_Source\PSoC4\CSD.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_Configuration.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_Control.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_Filter.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_ISR.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_Processing.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_RegisterMap.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_Sensing.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_SensingCSD_LL.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_Structure.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_Tuner.h" />
+<dep name=".\Generated_Source\PSoC4\Clk_1kHz.h" />
+<dep name=".\Generated_Source\PSoC4\Clock_1.h" />
+<dep name=".\Generated_Source\PSoC4\CyDMA.h" />
+<dep name=".\Generated_Source\PSoC4\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC4\CyLFClk.h" />
+<dep name=".\Generated_Source\PSoC4\CyLib.h" />
+<dep name=".\Generated_Source\PSoC4\Opamp_TIA_1.h" />
+<dep name=".\Generated_Source\PSoC4\PIRAmplifierStage1.h" />
+<dep name=".\Generated_Source\PSoC4\PIRAmplifierStage2.h" />
+<dep name=".\Generated_Source\PSoC4\PIRAmplifierStage2_PVT.h" />
+<dep name=".\Generated_Source\PSoC4\PVref_1.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_AmpOut.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_AmpOut_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_LED_Blue.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_LED_Blue_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_LED_Green.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_LED_Green_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_LED_Red.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_LED_Red_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_PGAIn.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_PGAIn_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_PIR.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_PIRRef.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_PIRRef_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_PIR_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_Vhi.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_Vhi_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_Vlow.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_Vlow_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_Vref.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_Vref_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_Vtherm.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_Vtherm_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\RefBuffer.h" />
+<dep name=".\Generated_Source\PSoC4\Switch_1.h" />
+<dep name=".\Generated_Source\PSoC4\Switch_1_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\System_Timer.h" />
+<dep name=".\Generated_Source\PSoC4\TIA_IN_1.h" />
+<dep name=".\Generated_Source\PSoC4\TIA_IN_1_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\TIA_OUT_1.h" />
+<dep name=".\Generated_Source\PSoC4\TIA_OUT_1_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Thermistor.h" />
+<dep name=".\Generated_Source\PSoC4\Timebase5s.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_BOOT.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_PINS.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_PVT.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_SCBCLK.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_SPI_UART.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_SPI_UART_PVT.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_rx.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_rx_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_tx.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_tx_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC4\cmsis_compiler.h" />
+<dep name=".\Generated_Source\PSoC4\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC4\core_cm0plus.h" />
+<dep name=".\Generated_Source\PSoC4\core_cm0plus_psoc4.h" />
+<dep name=".\Generated_Source\PSoC4\cyPm.h" />
+<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC4\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC4\cypins.h" />
+<dep name=".\Generated_Source\PSoC4\cytypes.h" />
+<dep name=".\Generated_Source\PSoC4\isr_Timebase5s.h" />
+<dep name=".\Generated_Source\PSoC4\isr_counter.h" />
+<dep name=".\Generated_Source\PSoC4\project.h" />
+<dep name=".\humidity.h" />
+<dep name=".\lux.h" />
+<dep name=".\pir.h" />
+<dep name=".\sensors.c" />
+<dep name=".\switch_sensor.h" />
+<dep name=".\temp.h" />
+<dep name=".\thermostat.h" />
+</file>
+<file name=".\humidity.h" />
+<file name=".\lux.h" />
+<file name=".\pir.h" />
+<file name=".\sensors.c" />
+<file name=".\switch_sensor.h" />
+<file name=".\temp.h" />
+<file name=".\thermostat.h" />
+<file name=".\CortexM0p\ARM_GCC_541\Debug\humdity.o">
+<dep name=".\Generated_Source\PSoC4\ADC.h" />
+<dep name=".\Generated_Source\PSoC4\ADC_FILTER.h" />
+<dep name=".\Generated_Source\PSoC4\ADC_IRQ.h" />
+<dep name=".\Generated_Source\PSoC4\ADC_intSarClock.h" />
+<dep name=".\Generated_Source\PSoC4\ADC_intUabClock.h" />
+<dep name=".\Generated_Source\PSoC4\CSD.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_Configuration.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_Control.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_Filter.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_ISR.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_Processing.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_RegisterMap.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_Sensing.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_SensingCSD_LL.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_Structure.h" />
+<dep name=".\Generated_Source\PSoC4\CSD_Tuner.h" />
+<dep name=".\Generated_Source\PSoC4\Clk_1kHz.h" />
+<dep name=".\Generated_Source\PSoC4\Clock_1.h" />
+<dep name=".\Generated_Source\PSoC4\CyDMA.h" />
+<dep name=".\Generated_Source\PSoC4\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC4\CyLFClk.h" />
+<dep name=".\Generated_Source\PSoC4\CyLib.h" />
+<dep name=".\Generated_Source\PSoC4\Opamp_TIA_1.h" />
+<dep name=".\Generated_Source\PSoC4\PIRAmplifierStage1.h" />
+<dep name=".\Generated_Source\PSoC4\PIRAmplifierStage2.h" />
+<dep name=".\Generated_Source\PSoC4\PIRAmplifierStage2_PVT.h" />
+<dep name=".\Generated_Source\PSoC4\PVref_1.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_AmpOut.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_AmpOut_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_LED_Blue.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_LED_Blue_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_LED_Green.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_LED_Green_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_LED_Red.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_LED_Red_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_PGAIn.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_PGAIn_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_PIR.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_PIRRef.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_PIRRef_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_PIR_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_Vhi.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_Vhi_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_Vlow.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_Vlow_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_Vref.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_Vref_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_Vtherm.h" />
+<dep name=".\Generated_Source\PSoC4\Pin_Vtherm_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\RefBuffer.h" />
+<dep name=".\Generated_Source\PSoC4\Switch_1.h" />
+<dep name=".\Generated_Source\PSoC4\Switch_1_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\System_Timer.h" />
+<dep name=".\Generated_Source\PSoC4\TIA_IN_1.h" />
+<dep name=".\Generated_Source\PSoC4\TIA_IN_1_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\TIA_OUT_1.h" />
+<dep name=".\Generated_Source\PSoC4\TIA_OUT_1_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Thermistor.h" />
+<dep name=".\Generated_Source\PSoC4\Timebase5s.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_BOOT.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_PINS.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_PVT.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_SCBCLK.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_SPI_UART.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_SPI_UART_PVT.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_rx.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_rx_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_tx.h" />
+<dep name=".\Generated_Source\PSoC4\UART_1_tx_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC4\cmsis_compiler.h" />
+<dep name=".\Generated_Source\PSoC4\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC4\core_cm0plus.h" />
+<dep name=".\Generated_Source\PSoC4\core_cm0plus_psoc4.h" />
+<dep name=".\Generated_Source\PSoC4\cyPm.h" />
+<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC4\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC4\cypins.h" />
+<dep name=".\Generated_Source\PSoC4\cytypes.h" />
+<dep name=".\Generated_Source\PSoC4\isr_Timebase5s.h" />
+<dep name=".\Generated_Source\PSoC4\isr_counter.h" />
+<dep name=".\Generated_Source\PSoC4\project.h" />
+<dep name=".\controls.h" />
+<dep name=".\humdity.c" />
+<dep name=".\humidity.h" />
+<dep name=".\imatrix.h" />
+<dep name=".\sensors.h" />
+</file>
+<file name=".\controls.h" />
+<file name=".\humdity.c" />
+<file name=".\sensors.h" />
 <file name=".\CortexM0p\ARM_GCC_541\Debug\leds.o">
 <dep name=".\Generated_Source\PSoC4\ADC.h" />
 <dep name=".\Generated_Source\PSoC4\ADC_FILTER.h" />
@@ -1128,7 +1318,6 @@
 <dep name=".\lux.h" />
 </file>
 <file name=".\lux.c" />
-<file name=".\lux.h" />
 <file name=".\CortexM0p\ARM_GCC_541\Debug\main.o">
 <dep name=".\Generated_Source\PSoC4\ADC.h" />
 <dep name=".\Generated_Source\PSoC4\ADC_FILTER.h" />
@@ -1223,7 +1412,6 @@
 <dep name=".\time.h" />
 </file>
 <file name=".\main.c" />
-<file name=".\temp.h" />
 <file name=".\CortexM0p\ARM_GCC_541\Debug\pir.o">
 <dep name=".\Generated_Source\PSoC4\ADC.h" />
 <dep name=".\Generated_Source\PSoC4\ADC_FILTER.h" />
@@ -1315,7 +1503,6 @@
 <dep name=".\pir.h" />
 </file>
 <file name=".\pir.c" />
-<file name=".\pir.h" />
 <file name=".\CortexM0p\ARM_GCC_541\Debug\switch_sensor.o">
 <dep name=".\Generated_Source\PSoC4\ADC.h" />
 <dep name=".\Generated_Source\PSoC4\ADC_FILTER.h" />
@@ -1497,96 +1684,6 @@
 <dep name=".\temp.c" />
 </file>
 <file name=".\temp.c" />
-<file name=".\CortexM0p\ARM_GCC_541\Debug\thermostat.o">
-<dep name=".\Generated_Source\PSoC4\ADC.h" />
-<dep name=".\Generated_Source\PSoC4\ADC_FILTER.h" />
-<dep name=".\Generated_Source\PSoC4\ADC_IRQ.h" />
-<dep name=".\Generated_Source\PSoC4\ADC_intSarClock.h" />
-<dep name=".\Generated_Source\PSoC4\ADC_intUabClock.h" />
-<dep name=".\Generated_Source\PSoC4\CSD.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Configuration.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Control.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Filter.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_ISR.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Processing.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_RegisterMap.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Sensing.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_SensingCSD_LL.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Structure.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Tuner.h" />
-<dep name=".\Generated_Source\PSoC4\Clk_1kHz.h" />
-<dep name=".\Generated_Source\PSoC4\Clock_1.h" />
-<dep name=".\Generated_Source\PSoC4\CyDMA.h" />
-<dep name=".\Generated_Source\PSoC4\CyFlash.h" />
-<dep name=".\Generated_Source\PSoC4\CyLFClk.h" />
-<dep name=".\Generated_Source\PSoC4\CyLib.h" />
-<dep name=".\Generated_Source\PSoC4\Opamp_TIA_1.h" />
-<dep name=".\Generated_Source\PSoC4\PIRAmplifierStage1.h" />
-<dep name=".\Generated_Source\PSoC4\PIRAmplifierStage2.h" />
-<dep name=".\Generated_Source\PSoC4\PIRAmplifierStage2_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\PVref_1.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_AmpOut.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_AmpOut_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_LED_Blue.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_LED_Blue_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_LED_Green.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_LED_Green_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_LED_Red.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_LED_Red_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_PGAIn.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_PGAIn_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_PIR.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_PIRRef.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_PIRRef_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_PIR_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vhi.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vhi_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vlow.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vlow_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vref.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vref_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vtherm.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vtherm_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\RefBuffer.h" />
-<dep name=".\Generated_Source\PSoC4\Switch_1.h" />
-<dep name=".\Generated_Source\PSoC4\Switch_1_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\System_Timer.h" />
-<dep name=".\Generated_Source\PSoC4\TIA_IN_1.h" />
-<dep name=".\Generated_Source\PSoC4\TIA_IN_1_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\TIA_OUT_1.h" />
-<dep name=".\Generated_Source\PSoC4\TIA_OUT_1_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Thermistor.h" />
-<dep name=".\Generated_Source\PSoC4\Timebase5s.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_BOOT.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_PINS.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_SCBCLK.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_SPI_UART.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_SPI_UART_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_rx.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_rx_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_tx.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_tx_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\cmsis_armcc.h" />
-<dep name=".\Generated_Source\PSoC4\cmsis_compiler.h" />
-<dep name=".\Generated_Source\PSoC4\cmsis_gcc.h" />
-<dep name=".\Generated_Source\PSoC4\core_cm0plus.h" />
-<dep name=".\Generated_Source\PSoC4\core_cm0plus_psoc4.h" />
-<dep name=".\Generated_Source\PSoC4\cyPm.h" />
-<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC4\cydisabledsheets.h" />
-<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC4\cyfitter_cfg.h" />
-<dep name=".\Generated_Source\PSoC4\cypins.h" />
-<dep name=".\Generated_Source\PSoC4\cytypes.h" />
-<dep name=".\Generated_Source\PSoC4\isr_Timebase5s.h" />
-<dep name=".\Generated_Source\PSoC4\isr_counter.h" />
-<dep name=".\Generated_Source\PSoC4\project.h" />
-<dep name=".\imatrix.h" />
-<dep name=".\thermostat.c" />
-</file>
-<file name=".\thermostat.c" />
 <file name=".\CortexM0p\ARM_GCC_541\Debug\time.o">
 <dep name=".\Generated_Source\PSoC4\ADC.h" />
 <dep name=".\Generated_Source\PSoC4\ADC_FILTER.h" />
@@ -1678,189 +1775,16 @@
 <dep name=".\time.h" />
 </file>
 <file name=".\time.c" />
-<file name=".\CortexM0p\ARM_GCC_541\Debug\sensors.o">
-<dep name=".\Generated_Source\PSoC4\ADC.h" />
-<dep name=".\Generated_Source\PSoC4\ADC_FILTER.h" />
-<dep name=".\Generated_Source\PSoC4\ADC_IRQ.h" />
-<dep name=".\Generated_Source\PSoC4\ADC_intSarClock.h" />
-<dep name=".\Generated_Source\PSoC4\ADC_intUabClock.h" />
-<dep name=".\Generated_Source\PSoC4\CSD.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Configuration.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Control.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Filter.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_ISR.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Processing.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_RegisterMap.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Sensing.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_SensingCSD_LL.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Structure.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Tuner.h" />
-<dep name=".\Generated_Source\PSoC4\Clk_1kHz.h" />
-<dep name=".\Generated_Source\PSoC4\Clock_1.h" />
-<dep name=".\Generated_Source\PSoC4\CyDMA.h" />
-<dep name=".\Generated_Source\PSoC4\CyFlash.h" />
+<file name=".\CortexM0p\ARM_GCC_541\Debug\cyfitter_cfg.o">
 <dep name=".\Generated_Source\PSoC4\CyLFClk.h" />
 <dep name=".\Generated_Source\PSoC4\CyLib.h" />
-<dep name=".\Generated_Source\PSoC4\Opamp_TIA_1.h" />
-<dep name=".\Generated_Source\PSoC4\PIRAmplifierStage1.h" />
-<dep name=".\Generated_Source\PSoC4\PIRAmplifierStage2.h" />
-<dep name=".\Generated_Source\PSoC4\PIRAmplifierStage2_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\PVref_1.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_AmpOut.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_AmpOut_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_LED_Blue.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_LED_Blue_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_LED_Green.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_LED_Green_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_LED_Red.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_LED_Red_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_PGAIn.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_PGAIn_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_PIR.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_PIRRef.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_PIRRef_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_PIR_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vhi.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vhi_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vlow.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vlow_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vref.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vref_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vtherm.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vtherm_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\RefBuffer.h" />
-<dep name=".\Generated_Source\PSoC4\Switch_1.h" />
-<dep name=".\Generated_Source\PSoC4\Switch_1_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\System_Timer.h" />
-<dep name=".\Generated_Source\PSoC4\TIA_IN_1.h" />
-<dep name=".\Generated_Source\PSoC4\TIA_IN_1_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\TIA_OUT_1.h" />
-<dep name=".\Generated_Source\PSoC4\TIA_OUT_1_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Thermistor.h" />
-<dep name=".\Generated_Source\PSoC4\Timebase5s.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_BOOT.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_PINS.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_SCBCLK.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_SPI_UART.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_SPI_UART_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_rx.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_rx_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_tx.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_tx_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\cmsis_armcc.h" />
-<dep name=".\Generated_Source\PSoC4\cmsis_compiler.h" />
-<dep name=".\Generated_Source\PSoC4\cmsis_gcc.h" />
-<dep name=".\Generated_Source\PSoC4\core_cm0plus.h" />
-<dep name=".\Generated_Source\PSoC4\core_cm0plus_psoc4.h" />
-<dep name=".\Generated_Source\PSoC4\cyPm.h" />
 <dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC4\cydisabledsheets.h" />
 <dep name=".\Generated_Source\PSoC4\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter_cfg.c" />
 <dep name=".\Generated_Source\PSoC4\cyfitter_cfg.h" />
-<dep name=".\Generated_Source\PSoC4\cypins.h" />
 <dep name=".\Generated_Source\PSoC4\cytypes.h" />
-<dep name=".\Generated_Source\PSoC4\isr_Timebase5s.h" />
-<dep name=".\Generated_Source\PSoC4\isr_counter.h" />
-<dep name=".\Generated_Source\PSoC4\project.h" />
-<dep name=".\humidity.h" />
-<dep name=".\lux.h" />
-<dep name=".\sensors.c" />
-<dep name=".\switch_sensor.h" />
-<dep name=".\temp.h" />
 </file>
-<file name=".\sensors.c" />
-<file name=".\switch_sensor.h" />
-<file name=".\CortexM0p\ARM_GCC_541\Debug\isr_counter.o">
-<dep name=".\Generated_Source\PSoC4\ADC.h" />
-<dep name=".\Generated_Source\PSoC4\ADC_FILTER.h" />
-<dep name=".\Generated_Source\PSoC4\ADC_IRQ.h" />
-<dep name=".\Generated_Source\PSoC4\ADC_intSarClock.h" />
-<dep name=".\Generated_Source\PSoC4\ADC_intUabClock.h" />
-<dep name=".\Generated_Source\PSoC4\CSD.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Configuration.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Control.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Filter.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_ISR.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Processing.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_RegisterMap.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Sensing.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_SensingCSD_LL.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Structure.h" />
-<dep name=".\Generated_Source\PSoC4\CSD_Tuner.h" />
-<dep name=".\Generated_Source\PSoC4\Clk_1kHz.h" />
-<dep name=".\Generated_Source\PSoC4\Clock_1.h" />
-<dep name=".\Generated_Source\PSoC4\CyDMA.h" />
-<dep name=".\Generated_Source\PSoC4\CyFlash.h" />
-<dep name=".\Generated_Source\PSoC4\CyLFClk.h" />
-<dep name=".\Generated_Source\PSoC4\CyLib.h" />
-<dep name=".\Generated_Source\PSoC4\Opamp_TIA_1.h" />
-<dep name=".\Generated_Source\PSoC4\PIRAmplifierStage1.h" />
-<dep name=".\Generated_Source\PSoC4\PIRAmplifierStage2.h" />
-<dep name=".\Generated_Source\PSoC4\PIRAmplifierStage2_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\PVref_1.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_AmpOut.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_AmpOut_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_LED_Blue.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_LED_Blue_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_LED_Green.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_LED_Green_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_LED_Red.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_LED_Red_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_PGAIn.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_PGAIn_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_PIR.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_PIRRef.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_PIRRef_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_PIR_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vhi.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vhi_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vlow.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vlow_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vref.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vref_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vtherm.h" />
-<dep name=".\Generated_Source\PSoC4\Pin_Vtherm_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\RefBuffer.h" />
-<dep name=".\Generated_Source\PSoC4\Switch_1.h" />
-<dep name=".\Generated_Source\PSoC4\Switch_1_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\System_Timer.h" />
-<dep name=".\Generated_Source\PSoC4\TIA_IN_1.h" />
-<dep name=".\Generated_Source\PSoC4\TIA_IN_1_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\TIA_OUT_1.h" />
-<dep name=".\Generated_Source\PSoC4\TIA_OUT_1_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Thermistor.h" />
-<dep name=".\Generated_Source\PSoC4\Timebase5s.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_BOOT.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_PINS.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_SCBCLK.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_SPI_UART.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_SPI_UART_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_rx.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_rx_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_tx.h" />
-<dep name=".\Generated_Source\PSoC4\UART_1_tx_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\cmsis_armcc.h" />
-<dep name=".\Generated_Source\PSoC4\cmsis_compiler.h" />
-<dep name=".\Generated_Source\PSoC4\cmsis_gcc.h" />
-<dep name=".\Generated_Source\PSoC4\core_cm0plus.h" />
-<dep name=".\Generated_Source\PSoC4\core_cm0plus_psoc4.h" />
-<dep name=".\Generated_Source\PSoC4\cyPm.h" />
-<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC4\cydisabledsheets.h" />
-<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC4\cyfitter_cfg.h" />
-<dep name=".\Generated_Source\PSoC4\cypins.h" />
-<dep name=".\Generated_Source\PSoC4\cytypes.h" />
-<dep name=".\Generated_Source\PSoC4\isr_Timebase5s.h" />
-<dep name=".\Generated_Source\PSoC4\isr_counter.c" />
-<dep name=".\Generated_Source\PSoC4\isr_counter.h" />
-<dep name=".\Generated_Source\PSoC4\project.h" />
-</file>
-<file name=".\Generated_Source\PSoC4\isr_counter.c" />
+<file name=".\Generated_Source\PSoC4\cyfitter_cfg.c" />
 <file name=".\CortexM0p\ARM_GCC_541\Debug\ADC.o">
 <dep name=".\Generated_Source\PSoC4\ADC.c" />
 <dep name=".\Generated_Source\PSoC4\ADC.h" />
@@ -2740,16 +2664,6 @@
 <dep name=".\Generated_Source\PSoC4\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC4\cyPm.c" />
-<file name=".\CortexM0p\ARM_GCC_541\Debug\cyfitter_cfg.o">
-<dep name=".\Generated_Source\PSoC4\CyLFClk.h" />
-<dep name=".\Generated_Source\PSoC4\CyLib.h" />
-<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC4\cyfitter_cfg.c" />
-<dep name=".\Generated_Source\PSoC4\cyfitter_cfg.h" />
-<dep name=".\Generated_Source\PSoC4\cytypes.h" />
-</file>
-<file name=".\Generated_Source\PSoC4\cyfitter_cfg.c" />
 <file name=".\CortexM0p\ARM_GCC_541\Debug\cymetadata.o">
 <dep name=".\Generated_Source\PSoC4\cymetadata.c" />
 </file>
@@ -2771,6 +2685,16 @@
 <dep name=".\Generated_Source\PSoC4\isr_Timebase5s.h" />
 </file>
 <file name=".\Generated_Source\PSoC4\isr_Timebase5s.c" />
+<file name=".\CortexM0p\ARM_GCC_541\Debug\isr_counter.o">
+<dep name=".\Generated_Source\PSoC4\CyLFClk.h" />
+<dep name=".\Generated_Source\PSoC4\CyLib.h" />
+<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC4\cytypes.h" />
+<dep name=".\Generated_Source\PSoC4\isr_counter.c" />
+<dep name=".\Generated_Source\PSoC4\isr_counter.h" />
+</file>
+<file name=".\Generated_Source\PSoC4\isr_counter.c" />
 <file name=".\CortexM0p\ARM_GCC_541\Debug\controls.o">
 <dep name=".\Generated_Source\PSoC4\CSD.h" />
 <dep name=".\Generated_Source\PSoC4\CSD_RegisterMap.h" />
@@ -2859,6 +2783,7 @@
 <dep name=".\Generated_Source\PSoC4\isr_counter.h" />
 <dep name=".\controls.c" />
 <dep name=".\leds.h" />
+<dep name=".\thermostat.h" />
 <dep name=".\time.h" />
 </file>
 <file name=".\controls.c" />
@@ -3078,7 +3003,7 @@
 <name_val_pair name="Generated_Source\PSoC4\CyBootAsmGnu.s" v="-mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC4 -alh=${OutputDir}/${CompileFile}.lst -g -W" />
 <name_val_pair name="Generated_Source\PSoC4\CyDMA.c" v="-mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -Og" />
 <name_val_pair name="Generated_Source\PSoC4\CyLFClk.c" v="-mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -Og" />
-<name_val_pair name="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\CortexM0p\ARM_GCC_541\Debug\ISMART Thermostat.hex" v="-mcpu=cortex-m0plus -mthumb -l m -L Generated_Source\PSoC4 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T Generated_Source\PSoC4\cm0plusgcc.ld -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects" />
+<name_val_pair name="C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\CortexM0p\ARM_GCC_541\Debug\ISMART Thermostat.hex" v="-mcpu=cortex-m0plus -mthumb -L Generated_Source\PSoC4 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T Generated_Source\PSoC4\cm0plusgcc.ld -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects" />
 <name_val_pair name="leds.c" v="-mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -Og" />
 <name_val_pair name="time.c" v="-mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -Og" />
 <name_val_pair name="pir.c" v="-mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -Og" />
@@ -3095,17 +3020,122 @@
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
 <link_deps_times>
-<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM0p" v="131476357721060000" />
+<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM0p" v="131476752952150001" />
 </link_deps_times>
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 <dataGuid v="504337dd-7d07-4bc7-9057-90e60cf6c469">
 <CyGuid_504337dd-7d07-4bc7-9057-90e60cf6c469 type_name="CyDesigner.Common.Debugger.CyBreakpointList" version="1">
 <debugger_breakpoint_list>
-<CyGuid_76464711-0ae1-4583-b869-f07a0403fc6e type_name="CyDesigner.Common.Debugger.CyFileLineBreakpoint" version="1" hitcount="0" condition="" enabled="True" hardware="True" temparary="False" filename=".\time.c" linenumber="113" />
-<CyGuid_76464711-0ae1-4583-b869-f07a0403fc6e type_name="CyDesigner.Common.Debugger.CyFileLineBreakpoint" version="1" hitcount="0" condition="" enabled="True" hardware="True" temparary="False" filename=".\time.c" linenumber="106" />
+<CyGuid_76464711-0ae1-4583-b869-f07a0403fc6e type_name="CyDesigner.Common.Debugger.CyFileLineBreakpoint" version="1" hitcount="0" condition="" enabled="True" hardware="True" temparary="False" filename=".\pir.c" linenumber="228" />
+<CyGuid_76464711-0ae1-4583-b869-f07a0403fc6e type_name="CyDesigner.Common.Debugger.CyFileLineBreakpoint" version="1" hitcount="0" condition="" enabled="True" hardware="True" temparary="False" filename=".\main.c" linenumber="140" />
 </debugger_breakpoint_list>
 </CyGuid_504337dd-7d07-4bc7-9057-90e60cf6c469>
+</dataGuid>
+<dataGuid v="718b6b01-68ba-4a17-b632-d38dc61ebb3b">
+<CyGuid_718b6b01-68ba-4a17-b632-d38dc61ebb3b type_name="CyDesigner.Gde.Schematic.Symbolcatalog.CyComponentCatalogControl+CyCompCatalogData" version="1" tab="Cypress">
+<tree_states_tab_names>
+<v>Cypress</v>
+<v>Off-Chip</v>
+</tree_states_tab_names>
+<tree_states>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Cypress Component Catalog\Communications">
+<ExpandedNodeIds>
+<v>Cypress Component Catalog</v>
+<v>Cypress Component Catalog\Analog</v>
+<v>Cypress Component Catalog\Communications</v>
+<v>Cypress Component Catalog\Digital</v>
+<v>Cypress Component Catalog\Digital\Functions</v>
+<v>Cypress Component Catalog\Digital\Logic</v>
+<v>Cypress Component Catalog\Ports and Pins</v>
+<v>Cypress Component Catalog\System</v>
+<v>Cypress Component Catalog\Thermal Management</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Cypress Component Catalog\Communications\LIN [v4.0]</v>
+<v>Cypress Component Catalog\Communications\Serial Communication Block (SCB) [v3.20]</v>
+<v>Cypress Component Catalog\Communications\SMBus/PMBus Slave</v>
+<v>Cypress Component Catalog\Communications\Software Transmit UART [v1.50]</v>
+<v>Cypress Component Catalog\Communications\SPI</v>
+<v>Cypress Component Catalog\Communications\UART (SCB mode) [v3.20]</v>
+<v>Cypress Component Catalog\Digital</v>
+<v>Cypress Component Catalog\Digital\Functions</v>
+<v>Cypress Component Catalog\Digital\Functions\PWM (TCPWM mode) [v2.10]</v>
+<v>Cypress Component Catalog\Digital\Functions\Quadrature Decoder (TCPWM mode) [v2.10]</v>
+<v>Cypress Component Catalog\Digital\Functions\Timer Counter (TCPWM mode) [v2.10]</v>
+<v>Cypress Component Catalog\Digital\Functions\Timer Counter PWM (TCPWM) [v2.10]</v>
+<v>Cypress Component Catalog\Digital\Logic</v>
+<v>Cypress Component Catalog\Digital\Logic\Digital Constant [v1.0]</v>
+<v>Cypress Component Catalog\Digital\Logic\Logic High '1' [v1.0]</v>
+<v>Cypress Component Catalog\Digital\Logic\Logic Low '0' [v1.0]</v>
+<v>Cypress Component Catalog\Digital\Logic\SmartIO [v1.10]</v>
+<v>Cypress Component Catalog\Digital\Logic\Virtual Mux [v1.0]</v>
+<v>Cypress Component Catalog\Display</v>
+<v>Cypress Component Catalog\Ports and Pins</v>
+<v>Cypress Component Catalog\Ports and Pins\Analog Pin [v2.20]</v>
+<v>Cypress Component Catalog\Ports and Pins\Digital Bidirectional Pin [v2.20]</v>
+<v>Cypress Component Catalog\Ports and Pins\Digital Input Pin [v2.20]</v>
+<v>Cypress Component Catalog\Ports and Pins\Digital Output Pin [v2.20]</v>
+<v>Cypress Component Catalog\System</v>
+<v>Cypress Component Catalog\System\Bootloadable [v1.50]</v>
+<v>Cypress Component Catalog\System\Bootloader [v1.50]</v>
+<v>Cypress Component Catalog\System\Clock [v2.20]</v>
+<v>Cypress Component Catalog\System\Die Temperature [v1.0]</v>
+<v>Cypress Component Catalog\System\DMA Channel [v1.0]</v>
+<v>Cypress Component Catalog\System\Global Signal Reference [v2.10]</v>
+<v>Cypress Component Catalog\System\Interrupt [v1.70]</v>
+<v>Cypress Component Catalog\System\Real-time clock (RTC) [v1.20]</v>
+<v>Cypress Component Catalog\Thermal Management</v>
+<v>Cypress Component Catalog\Thermal Management\RTD Calculator [v1.20]</v>
+<v>Cypress Component Catalog\Thermal Management\Thermistor Calculator [v1.20]</v>
+<v>Cypress Component Catalog\Thermal Management\Thermocouple Calculator [v1.20]</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Off-Chip Component Catalog</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Off-Chip Component Catalog</v>
+<v>Off-Chip Component Catalog\Active</v>
+<v>Off-Chip Component Catalog\Diodes</v>
+<v>Off-Chip Component Catalog\Electro-Mechanical</v>
+<v>Off-Chip Component Catalog\Passive</v>
+<v>Off-Chip Component Catalog\Power</v>
+<v>Off-Chip Component Catalog\Sensors</v>
+<v>Off-Chip Component Catalog\Transistors</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</tree_states>
+</CyGuid_718b6b01-68ba-4a17-b632-d38dc61ebb3b>
+</dataGuid>
+<dataGuid v="237c8ed1-e161-4c9d-af97-582eda6d6952">
+<CyGuid_d442b0b8-dd66-4eee-b5be-1cb213792b31 type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyCustomAnalogDevData" version="1" ZoomToPage="True" ZoomScale="0.02" ScrollX="36" ScrollY="10">
+<ComponentStates>
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="Net_1082" Color="-9580801" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="Net_1425" Color="-8213505" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="Net_1504" Color="-8289793" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="Net_1782" Color="-4160769" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="Net_1856" Color="-37377" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="AMuxNet::\ADC:cy_psoc4_sarmux_1\_CYAMUXSIDE_A" Color="-32064" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="Net_2400" Color="-32383" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="AMuxNet::\ADC:cy_psoc4_sarmux_1\_CYAMUXSIDE_B" Color="-24190" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="Net_2401" Color="-16255" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="Net_2808" Color="-8575" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="Net_2953" Color="-16740650" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="Net_3088" Color="-16755457" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="PIRsig_1" Color="-16776961" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="VREFint_1" Color="-8453889" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="\ADC:Net_1448\" Color="-2817835" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="\ADC:Net_331\" Color="-65410" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="\ADC:Net_408\" Color="-65536" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="\CSD:Net_150\" Color="-49408" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="\CSD:Net_2_0\" Color="-33024" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="\PIRAmplifierStage2:Net_29\" Color="-16638" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="\ADC:muxoutPlus\" Color="-5000448" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.Device.FitterPSoC.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="\ADC:muxoutMinus\" Color="-9644032" />
+</ComponentStates>
+</CyGuid_d442b0b8-dd66-4eee-b5be-1cb213792b31>
 </dataGuid>
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>

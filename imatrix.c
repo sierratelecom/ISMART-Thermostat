@@ -84,6 +84,7 @@ enum {
  *               Function Declarations
  ******************************************************/
 void ftoa(float f, char *str, uint8_t precision);
+void flush_rx_uart(void);
 
 /******************************************************
  *               Variable Definitions
@@ -169,7 +170,7 @@ bool get_AT_control( uint16_t data_type, uint16_t s_reg, void *value )
     strcpy( tx_buffer, "AT &IC" );
     itoa( s_reg, &tx_buffer[ strlen( tx_buffer ) ], 10 );
     strcat( tx_buffer, "?\r" );
-    
+    flush_rx_uart();    // Get all / any data pending
     UART_1_UartPutString( tx_buffer );
     
     return( get_AT_response( data_type, value ) );
@@ -264,11 +265,24 @@ bool get_AT_response( uint16_t response_type, void *value )
         /*
          * Check for Time out
          */
-        if( ( count > 10000 ) || ( rtc_time  > ( start_time + ISMART_TIMEOUT ) ) )
+        if( ( count > 10000 ) /* || ( rtc_time  > ( start_time + ISMART_TIMEOUT ) ) */ )
             return( false );
 
     } while( found == false );
     return true;
 }
-
+void flush_rx_uart(void)
+{
+    uint32_t uart_data, count;
+    
+    count = 0;
+    do {
+        uart_data = UART_1_UartGetByte();
+        if( ( uart_data & UART_1_UART_RX_UNDERFLOW ) != 0x00 ) {  // No more data
+            count += 1;
+        } else {    // Something in UART
+            count = 0;
+        }
+    } while( count < 10000 );
+}
 /* [] END OF FILE */
