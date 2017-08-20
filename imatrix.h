@@ -55,6 +55,7 @@
 #define RESPONSE_FLOAT      0x03
 
 void init_iMatrix_interface(void);
+void send_AT_control( uint16_t data_type, uint16_t s_reg, void *value );
 void send_AT_sensor( uint16_t data_type, uint16_t s_reg, void *value );
 bool get_AT_control( uint16_t data_type, uint16_t s_reg, void *value );
 bool get_AT_response( uint16_t response_type, void *value );

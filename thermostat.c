@@ -366,7 +366,7 @@ void process_thermostat(void)
     }
     thermostat.current_mode = new_mode; // Now the current mode
     uvalue = ( thermostat.cooling_on == true ? COOL_ON : 0 ) | ( thermostat.heating_on == true ? HEAT_ON : 0 );
-    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_5, &uvalue );
+    send_AT_control( IMATRIX_UINT32, AT_CONTROL_5, &uvalue );
 }
 
 void cool_off(void)
@@ -375,7 +375,7 @@ void cool_off(void)
     
     thermostat.cooling_on = false;
     value = ( thermostat.cooling_on == true ? COOL_ON : 0 ) | ( thermostat.heating_on == true ? HEAT_ON : 0 );
-    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_5, &value );
+    send_AT_control( IMATRIX_UINT32, AT_CONTROL_5, &value );
 
     Pin_LED_Blue_Write(LED_OFF);
     
@@ -386,7 +386,7 @@ void cool_on(void)
     
     thermostat.cooling_on = true;
     value = ( thermostat.cooling_on == true ? COOL_ON : 0 ) | ( thermostat.heating_on == true ? HEAT_ON : 0 );
-    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_5, &value );
+    send_AT_control( IMATRIX_UINT32, AT_CONTROL_5, &value );
     Pin_LED_Blue_Write(LED_ON);
 }
 void heat_off(void)
@@ -395,7 +395,7 @@ void heat_off(void)
     
     thermostat.heating_on = false;
     value = ( thermostat.cooling_on == true ? COOL_ON : 0 ) | ( thermostat.heating_on == true ? HEAT_ON : 0 );
-    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_5, &value );
+    send_AT_control( IMATRIX_UINT32, AT_CONTROL_5, &value );
     Pin_LED_Red_Write(LED_OFF);
     
 }
@@ -405,7 +405,7 @@ void heat_on(void)
     
     thermostat.heating_on = true;
     value = ( thermostat.cooling_on == true ? COOL_ON : 0 ) | ( thermostat.heating_on == true ? HEAT_ON : 0 );
-    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_5, &value );
+    send_AT_control( IMATRIX_UINT32, AT_CONTROL_5, &value );
     Pin_LED_Red_Write(LED_ON);
 }
 void fan_off(void)
@@ -414,7 +414,7 @@ void fan_off(void)
     
     thermostat.fan_on = false;
     value = 0;
-    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_4, &value );
+    send_AT_control( IMATRIX_UINT32, AT_CONTROL_4, &value );
     Pin_LED_Green_Write(LED_OFF);
     
 }
@@ -424,7 +424,7 @@ void fan_on(void)
     
     thermostat.fan_on = true;
     value = 1;
-    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_4, &value );
+    send_AT_control( IMATRIX_UINT32, AT_CONTROL_4, &value );
     Pin_LED_Blue_Write(LED_ON);
 }
 

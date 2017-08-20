@@ -121,6 +121,47 @@ void init_iMatrix_interface(void)
   * @param  Sensor Register, value
   * @retval : None
   */
+void send_AT_control( uint16_t data_type, uint16_t s_reg, void *value )
+{
+    char tx_buffer[ AT_BUFFER_LENGTH ];
+    uint32_t return_value, foo;
+    
+    memset( tx_buffer, 0x00, AT_BUFFER_LENGTH );       // Initialize to 0
+    strcpy( tx_buffer, "AT &IC" );
+    itoa( s_reg, &tx_buffer[ strlen( tx_buffer ) ], 10 );
+    strcat( tx_buffer, "=" );
+    /*
+     * Select data to output and add data
+     */
+    switch( data_type ) {
+        case IMATRIX_UINT32 :
+            //sprintf( tx_buffer, "AT &IS%u=%lu\r\n", s_reg, *(uint32_t *) value );
+            itoa( *( uint32_t *) value, &tx_buffer[ strlen( tx_buffer ) ], 10 );
+            break;
+        case IMATRIX_INT32 :
+            //sprintf( tx_buffer, "AT &IS%u=%ld\r\n", s_reg, *(int32_t *) value );
+            itoa( *( int32_t *) value, &tx_buffer[ strlen( tx_buffer ) ], 10 );
+            break;
+        case IMATRIX_FLOAT : 
+            foo = (uint32_t) *(float *) value;
+            //ftoa( *(float *) value, &tx_buffer[ strlen( tx_buffer ) ], 2 );
+            itoa( foo, &tx_buffer[ strlen( tx_buffer ) ], 10 );
+            //sprintf( tx_buffer, "AT &IS%u=%f\r\n", s_reg, *(float *) value );
+            // strcpy( tx_buffer, "AT &IS1=15.9876\r\n" );
+            break;
+    }
+    strcat( tx_buffer, "\r" );
+    
+    UART_1_UartPutString( tx_buffer );
+    
+    get_AT_response( RESPONSE_NONE, &return_value );
+
+}
+/**
+  * @brief Send and AT command to set a value of a uint32 sensor
+  * @param  Sensor Register, value
+  * @retval : None
+  */
 void send_AT_sensor( uint16_t data_type, uint16_t s_reg, void *value )
 {
     char tx_buffer[ AT_BUFFER_LENGTH ];
