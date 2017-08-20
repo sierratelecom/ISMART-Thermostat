@@ -47,14 +47,23 @@
 #define AT_CONTROL_4        4    // Fan On
 #define AT_CONTROL_5        5    // Cool/Heat 0 - off / 1 - Cool / 2 - Heat
 #define AT_CONTROL_6        6    // Mode
-
-
+/*
+ * AT Commands Supported
+ */
+enum {
+    AT_PROVISION = 0,
+    NO_AT_COMMANDS
+};
+/*
+ *  Response Types
+ */
 #define RESPONSE_NONE       0x00
 #define RESPONSE_UINT32     0x01
 #define RESPONSE_INT32      0x02
 #define RESPONSE_FLOAT      0x03
 
 void init_iMatrix_interface(void);
+void send_AT_command( uint16_t command );
 void send_AT_control( uint16_t data_type, uint16_t s_reg, void *value );
 void send_AT_sensor( uint16_t data_type, uint16_t s_reg, void *value );
 bool get_AT_control( uint16_t data_type, uint16_t s_reg, void *value );

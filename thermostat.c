@@ -425,7 +425,7 @@ void fan_on(void)
     thermostat.fan_on = true;
     value = 1;
     send_AT_control( IMATRIX_UINT32, AT_CONTROL_4, &value );
-    Pin_LED_Blue_Write(LED_ON);
+    Pin_LED_Green_Write(LED_ON);
 }
 
 /* [] END OF FILE */

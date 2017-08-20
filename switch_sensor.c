@@ -59,6 +59,8 @@
  *                    Constants
  ******************************************************/
 #define DEBOUNCE_COUNT  5
+#define PROVISION_TIME  10
+
 /******************************************************
  *                   Enumerations
  ******************************************************/
@@ -89,6 +91,8 @@ enum {
  * State variable for switch monitor
  */
 uint32_t switch_state;
+uint32_t switch_on_time = 0;
+extern uint32_t rtc_time;
 /******************************************************
  *               Function Definitions
  ******************************************************/
@@ -136,13 +140,18 @@ void process_switch(void)
                      */
                     value = 1;
                     send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_0, &value );
-                    // set_uint32_sensor_data( ASCB_SENSOR_SWITCH, 1 );
+                    switch_on_time = rtc_time;
                     switch_state = WAIT_TILL_OFF;
                 }
             } else
                 switch_state = MONITOR_SWITCH;
             break;
         case WAIT_TILL_OFF :
+            /*
+             * Check to see if Provision time down has occured and then send request to reenter provision mode
+             */
+            if( rtc_time > ( switch_on_time + PROVISION_TIME ) )
+                send_AT_command( AT_PROVISION );
             if( Switch_1_Read() != 0 ) {
                 count = 0;
                 switch_state = DEBOUNCE_OFF;

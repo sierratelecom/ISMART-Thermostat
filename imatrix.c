@@ -115,7 +115,30 @@ void init_iMatrix_interface(void)
     get_AT_response( false, &return_value );
     
 }
-
+/**
+  * @brief Send an AT command 
+  * @param  command
+  * @retval : None
+  */
+void send_AT_command( uint16_t command )
+{
+    char tx_buffer[ AT_BUFFER_LENGTH ];
+    uint32_t return_value;
+    
+    switch( command ) {
+        case AT_PROVISION :
+            strcpy( tx_buffer, "AT &IP\r" );
+            break;
+        default :
+            /*
+             * Ignore
+             */
+             return;
+    }
+    UART_1_UartPutString( tx_buffer );
+    
+    get_AT_response( RESPONSE_NONE, &return_value );
+}
 /**
   * @brief Send and AT command to set a value of a uint32 sensor
   * @param  Sensor Register, value
