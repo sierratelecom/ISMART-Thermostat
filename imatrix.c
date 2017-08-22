@@ -135,6 +135,9 @@ void send_AT_command( uint16_t command )
              */
              return;
     }
+    
+    flush_rx_uart();    // Get all / any data pending
+
     UART_1_UartPutString( tx_buffer );
     
     get_AT_response( RESPONSE_NONE, &return_value );

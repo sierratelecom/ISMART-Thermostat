@@ -113,6 +113,7 @@ void init_switch(void)
   * @retval : None
   */
 uint32_t count;
+bool provision_sent;
 void process_switch(void)
 {
     uint32_t value;
@@ -141,6 +142,7 @@ void process_switch(void)
                     value = 1;
                     send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_0, &value );
                     switch_on_time = rtc_time;
+                    provision_sent = false;
                     switch_state = WAIT_TILL_OFF;
                 }
             } else
@@ -150,9 +152,15 @@ void process_switch(void)
             /*
              * Check to see if Provision time down has occured and then send request to reenter provision mode
              */
-            if( rtc_time > ( switch_on_time + PROVISION_TIME ) )
-                send_AT_command( AT_PROVISION );
+            if( provision_sent == false ) {
+                if( rtc_time > ( switch_on_time + PROVISION_TIME ) ) {
+                    provision_sent = true;
+                    send_AT_command( AT_PROVISION );
+                    Pin_LED_Green_Write(0x01);
+                }
+            }
             if( Switch_1_Read() != 0 ) {
+                Pin_LED_Green_Write(0x00);
                 count = 0;
                 switch_state = DEBOUNCE_OFF;
             }
