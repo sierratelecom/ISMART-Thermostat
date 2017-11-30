@@ -159,7 +159,7 @@ void process_lux(void)
         
         lux = (float) pwmDutyCycle;
         
-        send_AT_sensor( IMATRIX_FLOAT, AT_SENSOR_5, &lux);
+        send_AT_sensor( IMATRIX_FLOAT, AT_SENSOR_7, &lux);
     }
 
 }

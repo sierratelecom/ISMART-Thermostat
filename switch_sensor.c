@@ -140,7 +140,7 @@ void process_switch(void)
                      * Switch Pressed - Send Notification, Turn on Blue LED - Wait till off again
                      */
                     value = 1;
-                    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_0, &value );
+                    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_10, &value );
                     switch_on_time = rtc_time;
                     provision_sent = false;
                     switch_state = WAIT_TILL_OFF;
@@ -173,7 +173,7 @@ void process_switch(void)
                      * Switch Pressed - Send Notification, Turn on Blue LED - Wait till off again
                      */
                     value = 0;
-                    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_0, &value );
+                    send_AT_sensor( IMATRIX_UINT32, AT_SENSOR_10, &value );
                     // set_uint32_sensor_data( ASCB_SENSOR_SWITCH, 1 );
                     switch_state = MONITOR_SWITCH;
                 }

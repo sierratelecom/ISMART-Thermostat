@@ -33,20 +33,27 @@
 #define IMATRIX_FLOAT       0x02
 #define IMATRIX_VARLENGTH   0x03
 
-#define AT_SENSOR_0         0    // User Input Switch
-#define AT_SENSOR_1         1    // Temperature
-#define AT_SENSOR_2         2    // Humidity
-#define AT_SENSOR_3         3    // Occupancy
-#define AT_SENSOR_4         4    // Proximity
-#define AT_SENSOR_5         5    // Lux Source
+#define AT_SENSOR_0         0    // On Board Temp
+#define AT_SENSOR_1         1    // Wi Fi BSSID
+#define AT_SENSOR_2         2    // Wi Fi CHannel
+#define AT_SENSOR_3         3    // Wi Fi RF Noise
+#define AT_SENSOR_4         4    // Wi Fi RSSI
+#define AT_SENSOR_5         5    // Humidity
+#define AT_SENSOR_6         6    // Inductive Prox
+#define AT_SENSOR_7         7    // Light
+#define AT_SENSOR_8         8    // Occupancy
+#define AT_SENSOR_9         9    // Room Temperature
+#define AT_SENSOR_10        10   // Switch
 
-#define AT_CONTROL_0        0    // RTC Value
-#define AT_CONTROL_1        1    // Set Point Home
-#define AT_CONTROL_2        2    // Set Point Away High
-#define AT_CONTROL_3        3    // Set Point Away Low
-#define AT_CONTROL_4        4    // Fan On
-#define AT_CONTROL_5        5    // Cool/Heat 0 - off / 1 - Cool / 2 - Heat
-#define AT_CONTROL_6        6    // Mode
+#define AT_CONTROL_0        0    // LED Green
+#define AT_CONTROL_1        1    // LED Red
+#define AT_CONTROL_2        2    // Cool/Heat 0 - off / 1 - Cool / 2 - Heat
+#define AT_CONTROL_3        3    // Fan On
+#define AT_CONTROL_4        4    // Mode
+#define AT_CONTROL_5        5    // Set Point Away High
+#define AT_CONTROL_6        6    // Set Point Away Low
+#define AT_CONTROL_7        7    // Set Point Home
+
 /*
  * AT Commands Supported
  */

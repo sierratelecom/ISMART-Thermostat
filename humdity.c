@@ -109,7 +109,7 @@ void process_humidity(void)
         humidity = CalculateHumidity(capacitance);
         
         float_humidity = (float) ( humidity ) / 10.0;
-        send_AT_sensor( IMATRIX_FLOAT, AT_SENSOR_2, &float_humidity );
+        send_AT_sensor( IMATRIX_FLOAT, AT_SENSOR_5, &float_humidity );
 
         /* Scan sensors */
         CSD_ScanAllWidgets();

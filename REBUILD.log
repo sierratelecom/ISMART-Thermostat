@@ -1,4 +1,4 @@
---------------- Rebuild Started: 08/19/2017 11:21:10 Project: ISMART Thermostat, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Rebuild Started: 11/03/2017 12:12:25 Project: ISMART Thermostat, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 Deleting file ".\CortexM0p\ARM_GCC_541\Debug\main.o"
 Deleting file ".\CortexM0p\ARM_GCC_541\Debug\imatrix.o"
 Deleting file ".\CortexM0p\ARM_GCC_541\Debug\time.o"
@@ -96,6 +96,8 @@ Deleting file ".\CortexM0p\ARM_GCC_541\Debug\System_Timer.o"
 Deleting file ".\CortexM0p\ARM_GCC_541\Debug\System_Timer_PM.o"
 Deleting file ".\CortexM0p\ARM_GCC_541\Debug\Clock_1.o"
 Deleting file ".\CortexM0p\ARM_GCC_541\Debug\isr_counter.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\ISMART Thermostat.hex"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\ISMART Thermostat.elf"
 Deleting file ".\CortexM0p\ARM_GCC_541\Debug\ISMART Thermostat.map"
 Deleting file ".\ISMART Thermostat.cycdx"
 Deleting file ".\ISMART Thermostat.rpt"
@@ -119,6 +121,10 @@ Dependency Generation...
 Cleanup...
 arm-none-eabi-gcc.exe -c main.c -o .\CortexM0p\ARM_GCC_541\Debug\main.o -mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0p\ARM_GCC_541\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -Og
 arm-none-eabi-gcc.exe -c imatrix.c -o .\CortexM0p\ARM_GCC_541\Debug\imatrix.o -mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0p\ARM_GCC_541\Debug/imatrix.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -Og
+imatrix.c: In function 'get_AT_response':
+imatrix.c:257:41: warning: variable 'start_time' set but not used [-Wunused-but-set-variable]
+     volatile uint32_t uart_data, count, start_time;
+                                         ^
 arm-none-eabi-gcc.exe -c time.c -o .\CortexM0p\ARM_GCC_541\Debug\time.o -mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0p\ARM_GCC_541\Debug/time.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -Og
 arm-none-eabi-gcc.exe -c controls.c -o .\CortexM0p\ARM_GCC_541\Debug\controls.o -mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0p\ARM_GCC_541\Debug/controls.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -Og
 arm-none-eabi-gcc.exe -c humdity.c -o .\CortexM0p\ARM_GCC_541\Debug\humdity.o -mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0p\ARM_GCC_541\Debug/humdity.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -Og
@@ -219,6 +225,6 @@ arm-none-eabi-ar.exe: creating .\CortexM0p\ARM_GCC_541\Debug\ISMART Thermostat.a
 arm-none-eabi-gcc.exe -Wl,--start-group -o "C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\CortexM0p\ARM_GCC_541\Debug\ISMART Thermostat.elf" .\CortexM0p\ARM_GCC_541\Debug\main.o .\CortexM0p\ARM_GCC_541\Debug\imatrix.o .\CortexM0p\ARM_GCC_541\Debug\time.o .\CortexM0p\ARM_GCC_541\Debug\controls.o .\CortexM0p\ARM_GCC_541\Debug\humdity.o .\CortexM0p\ARM_GCC_541\Debug\leds.o .\CortexM0p\ARM_GCC_541\Debug\lux.o .\CortexM0p\ARM_GCC_541\Debug\pir.o .\CortexM0p\ARM_GCC_541\Debug\sensors.o .\CortexM0p\ARM_GCC_541\Debug\switch_sensor.o .\CortexM0p\ARM_GCC_541\Debug\temp.o .\CortexM0p\ARM_GCC_541\Debug\thermostat.o .\CortexM0p\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM0p\ARM_GCC_541\Debug\cymetadata.o .\CortexM0p\ARM_GCC_541\Debug\Cm0plusStart.o ".\CortexM0p\ARM_GCC_541\Debug\ISMART Thermostat.a" "C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\CapSense_P4_v4_0\PSoC4\Library\Capsense_P4Library_GCCp.a" -mcpu=cortex-m0plus -mthumb -L Generated_Source\PSoC4 "-Wl,-Map,.\CortexM0p\ARM_GCC_541\Debug/ISMART Thermostat.map" -T Generated_Source\PSoC4\cm0plusgcc.ld -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects -Wl,--end-group
 cyelftool.exe -C "C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\CortexM0p\ARM_GCC_541\Debug\ISMART Thermostat.elf" --flash_row_size 128 --flash_size 32768 --flash_offset 0x00000000
 cyelftool.exe -S "C:\Users\greg.phillips\Documents\PSoC Designs\Thermostat\ISMART Thermostat.cydsn\CortexM0p\ARM_GCC_541\Debug\ISMART Thermostat.elf"
-Flash used: 24208 of 32768 bytes (73.9 %).
-SRAM used: 2684 of 4096 bytes (65.5 %). Stack: 1024 bytes. Heap: 128 bytes.
---------------- Rebuild Succeeded: 08/19/2017 11:21:32 ---------------
+Flash used: 25640 of 32768 bytes (78.2 %).
+SRAM used: 2716 of 4096 bytes (66.3 %). Stack: 1024 bytes. Heap: 128 bytes.
+--------------- Rebuild Succeeded: 11/03/2017 12:14:12 ---------------

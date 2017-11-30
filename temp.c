@@ -181,7 +181,7 @@ void process_temp(void)
         */
         float_temp = (float) ( temperature ) / 100.0;
         current_temperature = (int32_t) ( temperature ) / 100;
-        send_AT_sensor( IMATRIX_FLOAT, AT_SENSOR_1, &float_temp );
+        send_AT_sensor( IMATRIX_FLOAT, AT_SENSOR_9, &float_temp );
     }
     
 }

@@ -144,15 +144,15 @@ void init_thermostat(void)
     /*
      *  Get Setting from ISMART board
      */
-    if( get_AT_control( RESPONSE_INT32, AT_CONTROL_1, &ivalue ) == true ) {
+    if( get_AT_control( RESPONSE_INT32, AT_CONTROL_7, &ivalue ) == true ) {
         thermostat.home_set_point = ivalue;
-        if( get_AT_control( RESPONSE_INT32, AT_CONTROL_2, &ivalue ) == true ) {
+        if( get_AT_control( RESPONSE_INT32, AT_CONTROL_5, &ivalue ) == true ) {
             thermostat.away_high_set_point = ivalue;
-            if( get_AT_control( RESPONSE_INT32, AT_CONTROL_3, &ivalue ) == true ) {
+            if( get_AT_control( RESPONSE_INT32, AT_CONTROL_6, &ivalue ) == true ) {
                 thermostat.away_low_set_point = ivalue;
-                if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_4, &uvalue ) == true ) {
+                if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_3, &uvalue ) == true ) {
                     thermostat.fan_on = ( uvalue == 0 ? false : true );
-                    if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_5, &uvalue ) == true ) {
+                    if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_2, &uvalue ) == true ) {
                         if( uvalue == 0 ) {
                             thermostat.cooling_on = false;
                             thermostat.heating_on = false;
@@ -163,7 +163,7 @@ void init_thermostat(void)
                             thermostat.cooling_on = false;
                             thermostat.heating_on = true;
                         }
-                        if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_6, &uvalue ) == true ) {
+                        if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_5, &uvalue ) == true ) {
                             if( uvalue >= NO_MODES )
                                 uvalue = MODE_OFF;
                             thermostat.current_mode = uvalue;
@@ -221,25 +221,25 @@ void process_thermostat(void)
      *
      * Get Home Set Point
      */
-    if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_1, &ivalue ) == true ) {
+    if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_7, &ivalue ) == true ) {
         thermostat.home_set_point = ivalue;
     }
     /*
      * Get Away High Set Point
      */
-    if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_2, &ivalue ) == true ) {
+    if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_5, &ivalue ) == true ) {
         thermostat.away_high_set_point = ivalue;
     }
     /*
      * Get Away Low Set Point
      */
-    if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_3, &ivalue ) == true ) {
+    if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_6, &ivalue ) == true ) {
         thermostat.away_low_set_point = ivalue;
     }
     /*
      * Do we need to turn the Fan On/Off
      */
-    if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_4, &uvalue ) == true ) {
+    if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_3, &uvalue ) == true ) {
         if( uvalue == 0 ) {
             if( thermostat.fan_on == true ) {
                 fan_off();
@@ -253,7 +253,7 @@ void process_thermostat(void)
     /*
      * Get current Mode
       */
-    if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_6, &uvalue ) == true ) {
+    if( get_AT_control( RESPONSE_UINT32, AT_CONTROL_4, &uvalue ) == true ) {
         if( uvalue >= NO_MODES )
             uvalue = MODE_OFF;
         new_mode = uvalue;
@@ -366,7 +366,7 @@ void process_thermostat(void)
     }
     thermostat.current_mode = new_mode; // Now the current mode
     uvalue = ( thermostat.cooling_on == true ? COOL_ON : 0 ) | ( thermostat.heating_on == true ? HEAT_ON : 0 );
-    send_AT_control( IMATRIX_UINT32, AT_CONTROL_5, &uvalue );
+    send_AT_control( IMATRIX_UINT32, AT_CONTROL_2, &uvalue );
 }
 
 void cool_off(void)
@@ -375,7 +375,7 @@ void cool_off(void)
     
     thermostat.cooling_on = false;
     value = ( thermostat.cooling_on == true ? COOL_ON : 0 ) | ( thermostat.heating_on == true ? HEAT_ON : 0 );
-    send_AT_control( IMATRIX_UINT32, AT_CONTROL_5, &value );
+    send_AT_control( IMATRIX_UINT32, AT_CONTROL_2, &value );
 
     Pin_LED_Blue_Write(LED_OFF);
     
@@ -386,7 +386,7 @@ void cool_on(void)
     
     thermostat.cooling_on = true;
     value = ( thermostat.cooling_on == true ? COOL_ON : 0 ) | ( thermostat.heating_on == true ? HEAT_ON : 0 );
-    send_AT_control( IMATRIX_UINT32, AT_CONTROL_5, &value );
+    send_AT_control( IMATRIX_UINT32, AT_CONTROL_2, &value );
     Pin_LED_Blue_Write(LED_ON);
 }
 void heat_off(void)
@@ -395,7 +395,7 @@ void heat_off(void)
     
     thermostat.heating_on = false;
     value = ( thermostat.cooling_on == true ? COOL_ON : 0 ) | ( thermostat.heating_on == true ? HEAT_ON : 0 );
-    send_AT_control( IMATRIX_UINT32, AT_CONTROL_5, &value );
+    send_AT_control( IMATRIX_UINT32, AT_CONTROL_2, &value );
     Pin_LED_Red_Write(LED_OFF);
     
 }
@@ -405,7 +405,7 @@ void heat_on(void)
     
     thermostat.heating_on = true;
     value = ( thermostat.cooling_on == true ? COOL_ON : 0 ) | ( thermostat.heating_on == true ? HEAT_ON : 0 );
-    send_AT_control( IMATRIX_UINT32, AT_CONTROL_5, &value );
+    send_AT_control( IMATRIX_UINT32, AT_CONTROL_2, &value );
     Pin_LED_Red_Write(LED_ON);
 }
 void fan_off(void)
@@ -414,7 +414,7 @@ void fan_off(void)
     
     thermostat.fan_on = false;
     value = 0;
-    send_AT_control( IMATRIX_UINT32, AT_CONTROL_4, &value );
+    send_AT_control( IMATRIX_UINT32, AT_CONTROL_3, &value );
     Pin_LED_Green_Write(LED_OFF);
     
 }
@@ -424,7 +424,7 @@ void fan_on(void)
     
     thermostat.fan_on = true;
     value = 1;
-    send_AT_control( IMATRIX_UINT32, AT_CONTROL_4, &value );
+    send_AT_control( IMATRIX_UINT32, AT_CONTROL_3, &value );
     Pin_LED_Green_Write(LED_ON);
 }
 
